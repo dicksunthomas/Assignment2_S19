@@ -28,7 +28,7 @@ namespace Assignment2_S19
 
             // Balanced sums
             Console.WriteLine("\n\nBalanced sums");
-            List<int> arr = new List<int> { 1, 2, 3 };
+            List<int> arr = new List<int> { 5, 3, 6, 8};
             Console.WriteLine(balancedSums(arr));
             
 
@@ -42,7 +42,7 @@ namespace Assignment2_S19
 
             // grading students
             Console.WriteLine("\n\nGrading students");
-            int[] grades = { 73, 67, 38, 33 };
+            int[] grades = { 73, 66, 38, 33 };
             int[] r3 = gradingStudents(grades);
             displayArray(r3);
             
@@ -64,7 +64,8 @@ namespace Assignment2_S19
             Console.WriteLine(dayOfProgrammer(year));
             Console.ReadLine();
         }
-
+        // This assignment was a bit challenging and got a experience of using hackerrank.
+        //    -- Karthik
         static void displayArray(int[] arr)
         {
             Console.WriteLine();
@@ -160,19 +161,84 @@ namespace Assignment2_S19
         // Complete the balancedSums function below.
         static string balancedSums(List<int> arr)
         {
-           return "NO";
+            int sum = 0, leftsum = 0;
+            //this loop will give us the sum of all variables in the array
+            for (int i = 0; i < arr.Count; ++i)
+                sum += arr[i];
+            // this loop will decrease each item from the sum and compare with the left sum till sum is equal to left sum
+            for (int i = 0; i < arr.Count; ++i)
+            {
+
+                // sum is now right sum 
+                // for index i 
+                sum -= arr[i];
+
+                if (leftsum == sum)
+                    return "YES";
+
+                leftsum += arr[i];
+            }
+
+            /* If no equilibrium index found,  
+            then return 0 */
+
+            return "NO";
         }
 
         // Complete the missingNumbers function below.
         static int[] missingNumbers(int[] arr, int[] brr)
         {
-           
-            return new int[1];
-        } 
+            // Converted the array values to a dictonary with key value pairs where key is a array item and value is its frequency
+            //using ConvertDictonary function
+            Dictionary<int, int> arrd = convertDictonary(arr);
+            Dictionary<int, int> brrd = convertDictonary(brr);
+            // Initializing a new array list for missing elements
+            ArrayList miss = new ArrayList();
+            // In this loop we compare both dictonary key and value and missing elements will get added into the array list
+            foreach (var pair in brrd)
+            {
+                if (arrd.TryGetValue(pair.Key, out int value))
+                {
+                    if (value != pair.Value)
+                    {
+                        miss.Add(pair.Key);
+                    }
+                }
+                else
+                {
+                    miss.Add(pair.Key);
+                }
+            }
+            return miss.OfType<int>().ToArray();
+        }
+        // Function for converting array to dictonary
+        public static Dictionary<int, int> convertDictonary(int[] arrD)
+        {
+            return arrD.GroupBy(c => c)
+                       .OrderBy(c => c.Key)
+                       .ToDictionary(grp => grp.Key, grp => grp.Count());
+        }
         // Complete the gradingStudents function below.
         static int[] gradingStudents(int[] grades)
         {
-            return new int[1];
+            int multiple = 5;
+            List<int> rs = new List<int>();
+            for (int i = 0; i < grades.Length; i++)
+            {
+                int rem = grades[i] % multiple;
+                // This loop will check whether the grade can be rounded off or not
+                if (grades[i] >= 38 && rem > 2)
+                {
+                    int result = grades[i] - rem;
+                        result += multiple;
+                    rs.Add(result);
+                }
+                else
+                {
+                    rs.Add(grades[i]);
+                }
+            }
+            return rs.OfType<int>().ToArray();
         }
 
         // Complete the findMedian function below.
