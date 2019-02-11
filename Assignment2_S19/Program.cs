@@ -77,15 +77,18 @@ namespace Assignment2_S19
         // Complete the rotLeft function below.
         static int[] rotLeft(int[] a, int d)
         {
-
+            //checking if the array empty of legth is less than 2 and retruns the same array
             if (a == null || a.Length < 2) return a;
             d %= a.Length;
+            //checking if the array length and d is same, then we can return the same array itself
             if (d == 0) return a;
+            /*we are initialising 2 variables left and right so that we can decide which rotation is needed to obtain the output in least 
+            number of moves*/
             int left = d < 0 ? -d : a.Length + d;
             int right = d > 0 ? d : a.Length - d;
+            //Now according to the left and right value will each for loop will be run
             if (left <= right)
             {
-
                 for (int i = 0; i < right; i++)
                 {
                     var temp = a[a.Length - 1];
@@ -108,8 +111,11 @@ namespace Assignment2_S19
         // Complete the maximumToys function below.
         static int maximumToys(int[] prices, int k)
         {
+            //Calling the custorm sort function(selection sort)
             int[] sorted = sortedArray(prices);
             int sum = 0, i;
+            /*Loop will iterate through each array element and then checks if value of sum 
+            is less than the total money(k) and then it adds to the sum*/
             for (i = 0; i < sorted.Length; i++)
             {
                 if (sum < k)
@@ -124,6 +130,7 @@ namespace Assignment2_S19
 
             return i - 1;
         }
+        //Array sorting function
         static int[] sortedArray(int[] arr)
         {
             int min_position;
@@ -195,6 +202,7 @@ namespace Assignment2_S19
         static int[] closestNumbers(int[] arr)
         {
             sortedArray(arr);
+            //initialising new dictionary for 
             Dictionary<int[], int> arr1 = new Dictionary<int[], int>();
             for (int i = 0; i < arr.Length - 1; i++)
             {
@@ -224,6 +232,7 @@ namespace Assignment2_S19
         // Complete the dayOfProgrammer function below.
         static string dayOfProgrammer(int year)
         {
+            //checking the year and if less than 1917 then the Julian Calendar
             if (year <= 1917)
             {
                 if (year % 4 == 0)
@@ -235,10 +244,12 @@ namespace Assignment2_S19
                     return "13.09." + year;
                 }
             }
+            //Condition for during the transition period
             else if (year == 1918)
             {
                 return "26.09." + year;
             }
+            //condition for Gregorian calendar
             else
             {
                 if (year % 400 == 0 || year % 4 == 0 && year % 100 != 0)
