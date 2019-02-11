@@ -272,10 +272,8 @@ namespace Assignment2_S19
 
             }
             var mn = arr1.Min(x => x.Value);
-            Console.WriteLine("mn " + mn);
             ArrayList finalre = new ArrayList();
             var fr = arr1.Where(x => x.Value == mn).ToList();
-            Console.WriteLine("Length " + fr.Count());
             foreach (var item in fr)
             {
                 foreach (var k in item.Key)
