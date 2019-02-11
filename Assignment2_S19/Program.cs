@@ -178,23 +178,82 @@ namespace Assignment2_S19
         // Complete the findMedian function below.
         static int findMedian(int[] arr)
         {
-            return 0;
-            
+            arr = sortedArray(arr);
+            int median = 0;
+            if (arr.Length % 2 == 0)
+            {
+                median = (arr[arr.Length / 2] + arr[(arr.Length / 2) + 1]) / 2;
+            }
+            else
+            {
+                median = arr[arr.Length / 2];
+            }
+            return median;
         }
 
         // Complete the closestNumbers function below.
         static int[] closestNumbers(int[] arr)
         {
-            return new int[1];
+            sortedArray(arr);
+            Dictionary<int[], int> arr1 = new Dictionary<int[], int>();
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                int diff = 0;
+
+                diff = arr[i + 1] - arr[i];
+                int[] qq = { arr[i], arr[i + 1] };
+                arr1.Add(qq, diff);
+
+            }
+            var mn = arr1.Min(x => x.Value);
+            Console.WriteLine("mn " + mn);
+            ArrayList finalre = new ArrayList();
+            var fr = arr1.Where(x => x.Value == mn).ToList();
+            Console.WriteLine("Length " + fr.Count());
+            foreach (var item in fr)
+            {
+                foreach (var k in item.Key)
+                {
+                    finalre.Add(k);
+                }
+            }
+
+            return finalre.OfType<int>().ToArray();
         }
 
         // Complete the dayOfProgrammer function below.
         static string dayOfProgrammer(int year)
         {
+            if (year <= 1917)
+            {
+                if (year % 4 == 0)
+                {
+                    return "12.09." + year;
+                }
+                else
+                {
+                    return "13.09." + year;
+                }
+            }
+            else if (year == 1918)
+            {
+                return "26.09." + year;
+            }
+            else
+            {
+                if (year % 400 == 0 || year % 4 == 0 && year % 100 != 0)
+                {
+                    return "12.09." + year;
+                }
+                else
+                {
+                    return "13.09." + year;
+                }
+            }
 
-            return "";
-            
         }
+
+
         
     }
 }
