@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace Assignment2_S19
 {
@@ -29,36 +30,39 @@ namespace Assignment2_S19
             Console.WriteLine("\n\nBalanced sums");
             List<int> arr = new List<int> { 1, 2, 3 };
             Console.WriteLine(balancedSums(arr));
-            Console.ReadLine();
+            
 
             // Missing numbers
             Console.WriteLine("\n\nMissing numbers");
-            int[] arr1 = { 203, 204, 205, 206, 207, 208, 203, 204, 205, 206 };
-            int[] brr = { 203, 204, 204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204 };
+            int[] arr1 = { 11, 4, 11, 7, 13, 4, 12, 11, 10, 14 };
+            int[] brr = { 11, 4, 11, 7, 3, 7, 10, 13, 4, 8, 12, 11, 10, 14, 12 };
             int[] r2 = missingNumbers(arr1, brr);
             displayArray(r2);
+           
 
             // grading students
             Console.WriteLine("\n\nGrading students");
             int[] grades = { 73, 67, 38, 33 };
             int[] r3 = gradingStudents(grades);
             displayArray(r3);
-
+            
             // find the median
             Console.WriteLine("\n\nFind the median");
             int[] arr2 = { 0, 1, 2, 4, 6, 5, 3 };
             Console.WriteLine(findMedian(arr2));
+            
 
             // closest numbers
             Console.WriteLine("\n\nClosest numbers");
-            int[] arr3 = { 5, 4, 3, 2 };
+            int[] arr3 = { 5, 4, 3, 2,1 };
             int[] r4 = closestNumbers(arr3);
             displayArray(r4);
-
+           
             // Day of programmer
             Console.WriteLine("\n\nDay of Programmer");
             int year = 2017;
             Console.WriteLine(dayOfProgrammer(year));
+            Console.ReadLine();
         }
 
         static void displayArray(int[] arr)
@@ -156,57 +160,41 @@ namespace Assignment2_S19
         // Complete the balancedSums function below.
         static string balancedSums(List<int> arr)
         {
-            int sum = 0, leftsum = 0;
-            for (int i = 0; i < arr.Count; ++i)
-                sum += arr[i];
-            for (int i = 0; i < arr.Count; ++i)
-            {
-
-                // sum is now right sum 
-                // for index i 
-                sum -= arr[i];
-
-                if (leftsum == sum)
-                    return "YES";
-
-                leftsum += arr[i];
-            }
-
-            /* If no equilibrium index found,  
-            then return 0 */
-
-            return "NO";
+           return "NO";
         }
 
         // Complete the missingNumbers function below.
         static int[] missingNumbers(int[] arr, int[] brr)
         {
-            return new int[] { };
-        }
-
-
+           
+            return new int[1];
+        } 
         // Complete the gradingStudents function below.
         static int[] gradingStudents(int[] grades)
         {
-            return new int[] { };
+            return new int[1];
         }
 
         // Complete the findMedian function below.
         static int findMedian(int[] arr)
         {
             return 0;
+            
         }
 
         // Complete the closestNumbers function below.
         static int[] closestNumbers(int[] arr)
         {
-            return new int[] { };
+            return new int[1];
         }
 
         // Complete the dayOfProgrammer function below.
         static string dayOfProgrammer(int year)
         {
+
             return "";
+            
         }
+        
     }
 }
