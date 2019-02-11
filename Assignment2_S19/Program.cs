@@ -64,6 +64,7 @@ namespace Assignment2_S19
             Console.WriteLine(dayOfProgrammer(year));
             Console.ReadLine();
         }
+        //Self Reflection
         /* This assignment helped in understanding more algorithms and also by using hackerrank came to the importance of code optimisation 
          * and learned to avoid uncessary loops and complexity. Maybe we can improve this by adding bit more oops concepts. --Dicksun*/
         /* This assignment was a bit challenging and got a experience of using hackerrank
